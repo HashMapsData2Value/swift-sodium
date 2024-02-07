@@ -1,4 +1,4 @@
-# Swift-Sodium [![Build Status]
+# Swift-Sodium
 
 ## Why this fork?
 
