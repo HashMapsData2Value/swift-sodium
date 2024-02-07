@@ -1,4 +1,18 @@
-# Swift-Sodium [![Build Status](https://travis-ci.com/jedisct1/swift-sodium.svg?branch=master)](https://travis-ci.com/jedisct1/swift-sodium)
+# Swift-Sodium [![Build Status]
+
+## Why this fork?
+
+The original swift-sodium library uses LibSodium binaries that do not contain certain low-level API functions, such as the crypto_scalarmult_ed25519_base_noclamp. These functions, while not necessary for the vast majority of apps in need of elliptic curve cryptograpfy, are necessary for those us who need to manipulate scalars and points on the curve more finely.
+
+In accordance with the instructions from jedist1 provided in [issue 248](https://github.com/jedisct1/swift-sodium/issues/248), building the LibSodium binaries for iOS platforms is done using the [apple-xcframework.sh](https://github.com/jedisct1/libsodium/blob/master/dist-build/apple-xcframework.sh) script under libsodium/dist-build. The binaries are then placed under libsodium-apple and put into swift-sodium/Clibsodium.xcframework/ to replace the standard ones provided in the original swift-sodium library.
+
+    git clone -b stable https://github.com/jedisct1/libsodium
+    cd libsodium
+    env LIBSODIUM_FULL_BUILD=1 ./dist-build/apple-xcframework.sh
+
+Running with LIBSODIUM_FULL_BUILD=1 is what ensures that the full extent of the LibSodium binaries' funcitons are made available to our own Swift code/libraries when we import Clibsodium (Sodium) from swift-sodium..
+
+# Original README.md
 
 Swift-Sodium provides a safe and easy to use interface to perform common cryptographic operations on macOS, iOS, tvOS and watchOS.
 
@@ -405,9 +419,9 @@ XCTAssertEqual(input, twice)
 
 ## Algorithms
 
-* Stream ciphers: XChaCha20, XSalsa20
-* AEADs: XChaCha20Poly1305, AEGIS-128L, AEGIS-256, AES256-GCM
-* MACs: Poly1305, HMAC-SHA512/256
-* Hash function: BLAKE2B
-* Key exchange: X25519
-* Signatures: Ed25519
+- Stream ciphers: XChaCha20, XSalsa20
+- AEADs: XChaCha20Poly1305, AEGIS-128L, AEGIS-256, AES256-GCM
+- MACs: Poly1305, HMAC-SHA512/256
+- Hash function: BLAKE2B
+- Key exchange: X25519
+- Signatures: Ed25519
