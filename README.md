@@ -2,7 +2,7 @@
 
 ## Why this fork?
 
-The original swift-sodium library uses LibSodium binaries that do not contain certain low-level API functions, such as the crypto_scalarmult_ed25519_base_noclamp. These functions, while not necessary for the vast majority of apps in need of elliptic curve cryptograpfy, are necessary for those us who need to manipulate scalars and points on the curve more finely.
+The original swift-sodium library uses LibSodium binaries that do not contain certain low-level API functions, such as the crypto_scalarmult_ed25519_base_noclamp. These functions, while not necessary for the vast majority of apps in need of elliptic curve cryptography, are necessary for those us who need to manipulate scalars and points on the curve more finely.
 
 In accordance with the instructions from jedist1 provided in [issue 248](https://github.com/jedisct1/swift-sodium/issues/248), building the LibSodium binaries for iOS platforms is done using the [apple-xcframework.sh](https://github.com/jedisct1/libsodium/blob/master/dist-build/apple-xcframework.sh) script under libsodium/dist-build. The binaries are then placed under libsodium-apple and put into swift-sodium/Clibsodium.xcframework/ to replace the standard ones provided in the original swift-sodium library.
 
