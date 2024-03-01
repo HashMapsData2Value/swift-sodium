@@ -1,4 +1,4 @@
-# Swift-Sodium
+# Swift-Sodium [Full Version]
 
 ## Why this fork?
 
